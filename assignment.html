@@ -9,7 +9,7 @@
     <body>
         <section>
             <h1>TABLE</h1>
-            <input type="number" id="row" placeholder="enter the value of row">&nbsp;&nbsp;&nbsp;&nbsp;
+            <input type="number" id="row" placeholder="enter the value of row"><br><br>
             <input type="number" id="col" placeholder="enter the value of column"><br><br>
             <input type="button" value="Create Table" onclick="tablebox();"><br><br>
 
@@ -74,7 +74,7 @@
         </section>
         <section>
             <h1>REMOVE A CHARACTER</h1>
-            <input type="text" id="nam" placeholder="enter name here">&nbsp;&nbsp;&nbsp;&nbsp;
+            <input type="text" id="nam" placeholder="enter name here"><br><br>
             <input type="number" id="pos" placeholder="enter position here"><br><br>
             <input type="button" value="Click here" onclick="removechar();"><br><br>
 
@@ -192,6 +192,7 @@
             //palindrome
             generatepalindrome = () => {
                 textpal=document.querySelector("#txtpal").value;
+                textpal=textpal.toUpperCase();
                 if (textpal=="" || textpal.length<2){
                     document.querySelector("#palindrome").innerHTML="please enter more than one letter";
                 } else {
