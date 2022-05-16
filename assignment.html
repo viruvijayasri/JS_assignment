@@ -1,0 +1,331 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <title>JS</title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    </head>
+    <body>
+        <section>
+            <h1>TABLE</h1>
+            <input type="number" id="row" placeholder="enter the value of row">&nbsp;&nbsp;&nbsp;&nbsp;
+            <input type="number" id="col" placeholder="enter the value of column"><br><br>
+            <input type="button" value="Create Table" onclick="tablebox();"><br><br>
+
+            <div id="table"></div><br><br>
+        </section>
+        <section>
+            <h1>ROTATE A STRING</h1>
+            <input type="text" id="txt" placeholder="Enter your Name"><br><br>
+            <input type="button" value="Click me to Rotate" onclick="stringrotate();"><br><br>
+
+            <div id="rotation"></div><br><br>
+        </section>
+        <section>
+            <h1>VOWELS IN A GIVEN STRING</h1>
+            <input type="text" id="txtvow" placeholder="Enter a String"><br><br>
+            <input type="button" value="Click here" onclick="countvowels();"><br><br>
+
+            <div id="vowels"></div><br><br>
+        </section>
+        <section>
+            <h1>SWAP THE ELEMENTS</h1>
+            <input type="text" id="txtswp" placeholder="Enter a String"><br><br>
+            <input type="button" value="Click me to Swap" onclick="swapelement();"><br><br>
+
+            <div id="swap"></div><br><br>
+        </section>
+
+        <section>
+            <h1>LONGEST ARRAY</h1>
+            <input type="text" id="txtlng" placeholder="Enter text here"><br><br>
+            <input type="button" value="Click Here" onclick="longestarray();"><br><br>
+
+            <div id="long"></div><br><br>
+        </section>
+        <section>
+            <h1>PALINDROME</h1>
+            <input type="text" id="txtpal" placeholder="Enter text here"><br><br>
+            <input type="button" value="Click Me" onclick="generatepalindrome();"><br><br>
+
+            <div id="palindrome"></div><br><br>
+        </section>
+        <section>
+            <h1>PRIME NUMBER</h1>
+            <input type="number" id="txtprm" placeholder="Enter number here"><br><br>
+            <input type="button" value="Click Me to Check" onclick="generateprime();"><br><br>
+
+            <div id="primenum"></div><br><br>
+        </section>
+        <section>
+            <h1>FIBONACCI SERIES</h1>
+            <input type="number" id="txtfib" placeholder="Enter number here"><br><br>
+            <input type="button" value="Click here" onclick="generatefibo();"><br><br>
+
+            <div id="fibonacci"></div><br><br>
+        </section>
+        <section>
+            <h1>FACTORIAL</h1>
+            <input type="number" id="txtfact" placeholder="Enter number here"><br><br>
+            <input type="button" value="Click here" onclick="generatefact();"><br><br>
+
+            <div id="factorial"></div><br><br>
+        </section>
+        <section>
+            <h1>REMOVE A CHARACTER</h1>
+            <input type="text" id="nam" placeholder="enter name here">&nbsp;&nbsp;&nbsp;&nbsp;
+            <input type="number" id="pos" placeholder="enter position here"><br><br>
+            <input type="button" value="Click here" onclick="removechar();"><br><br>
+
+            <div id="remove"></div><br><br>
+        </section>
+        <section>
+            <h1>CALCULATE THE SUM</h1>
+            <input type="number" id="sum" placeholder="enter number here"><br><br>
+            <input type="button" value="Click here" onclick="calsum();"><br><br>
+
+            <div id="add"></div><br><br>
+        </section>
+        <section>
+            <h1>PATTERN</h1>
+            <input type="number" id="pat" placeholder="Enter number here"><br><br>
+            <input type="button" value="Click here" onclick="generatepattern();"><br><br>
+
+            <div id="pattern"></div><br><br>
+        </section>
+        <section>
+            <h1>PYRAMID</h1>
+            <input type="number" id="pyr" placeholder="Enter number here"><br><br>
+            <input type="button" value="Click here" onclick="generatepyramid();"><br><br>
+
+            <div id="pyramid"></div><br><br>
+        </section>
+    
+        <script>
+            //table
+            tablebox = () => {
+                rowcount=document.querySelector("#row").value;
+                colcount=document.querySelector("#col").value;
+                if (rowcount<1 || colcount<1 || rowcount=="" || colcount==""){
+                       document.querySelector("#table").innerHTML="please enter the value greater than 0";
+                } else {
+                    rowcount=Math.floor(rowcount);
+                    colcount=Math.floor(colcount);
+                output="";
+                output += "<table border=1>";
+                    for (i=0;i<rowcount;i++) {
+                    output += "<tr>";
+                        for (j=0;j<colcount;j++) {
+                        output += "<td>column</td>";
+                        }
+                    output +="</tr>";
+                    }
+                output += "</table>";
+
+                document.querySelector("#table").innerHTML=output;
+                }  
+            }
+
+            //rotate string
+            stringrotate = () => {
+            enterName=document.querySelector("#txt").value;
+            enterName = enterName.split("");
+            if (enterName=="") {
+                document.querySelector("#rotation").innerHTML="please enter something";
+            } else {
+            output=" ";
+            
+            for (i=1;i<=enterName.length;i++) {
+                 removeFirst=enterName.shift();
+                insertLast=enterName.push(removeFirst);
+                output += enterName +"<br>";
+            } 
+            document.querySelector("#rotation").innerHTML=output;
+            }
+        }
+
+            //number of vowels
+            countvowels = () => {
+                textvowel=document.querySelector("#txtvow").value;
+            count=0;
+            for(i=0;i<=textvowel.length;i++) {
+                c=textvowel[i];
+               if(c=="a" || c=="A" || c=="e" || c=="E" || c=="i" || c=="I" || c=="o" || c=="O" || c=="u" || c=="U"){
+                    count++;
+                } 
+            }
+             document.querySelector("#vowels").innerHTML=count;
+            }
+
+            //swap the elements
+            swapelement = () => {
+                element=document.querySelector("#txtswp").value;
+                element=element.split("");
+                if (element=="" || element.length<2){
+                document.querySelector("#swap").innerHTML="please enter the value greater than 1";
+                } else {
+                 [element[0],element[element.length-1]] = [element[element.length-1],element[0]]
+                document.querySelector("#swap").innerHTML=element;
+                }
+            }
+
+            //longest array
+            longestarray = () => {
+                str=document.querySelector("#txtlng").value;
+                str=str.split(" ");
+                max="";
+                if (str=="" || str>=0 || str<=0){
+                    document.querySelector("#long").innerHTML="please write here with space"; 
+                } else {
+                largest="";
+                for (i=0;i<str.length;i++) {
+                    max=str[i];
+                    if(max.length>largest.length) {
+                        largest=max;
+                    }
+                }
+                document.querySelector("#long").innerHTML=largest;
+            }
+            }
+
+            //palindrome
+            generatepalindrome = () => {
+                textpal=document.querySelector("#txtpal").value;
+                if (textpal=="" || textpal.length<2){
+                    document.querySelector("#palindrome").innerHTML="please enter more than one letter";
+                } else {
+                msg="It is a palindrome"
+                for(i=0;i<textpal.length/2;i++) {
+                    if(textpal[i]!=textpal[textpal.length-1-i]) {
+                       msg="It is not a palindrome";
+                    }
+                }
+                document.querySelector("#palindrome").innerHTML=msg;
+            }
+            }
+
+            //prime
+            generateprime = () => {
+                pnum=document.querySelector("#txtprm").value;
+                pnum=Math.floor(pnum);
+                if(pnum==1){
+                    document.querySelector("#primenum").innerHTML=pnum + " is neither prime nor composite number";
+                } else if(pnum<1){
+                    document.querySelector("#primenum").innerHTML="please enter the value greater than 1";
+                } else {
+                    result=pnum + " is a prime number";
+                    for(i=2;i<pnum;i++) {
+                        if(pnum%i==0){
+                            result=pnum + " is not a prime number";
+                        } 
+                    }
+                    document.querySelector("#primenum").innerHTML=result;
+                }
+            }
+
+            //fibonacci
+            generatefibo = () => {
+                num1=document.querySelector("#txtfib").value;
+                fibo=[0,1];
+                num1=Math.floor(num1);
+                if(num1==1){
+                    document.querySelector("#fibonacci").innerHTML=0; 
+                } else if (num1<=0){
+                    document.querySelector("#fibonacci").innerHTML="please enter the value greater than 0"; 
+                } else {
+                    for(i=2;i<num1;i++) {
+                        fibo.push(fibo[i-2]+fibo[i-1]);
+                }
+                document.querySelector("#fibonacci").innerHTML=fibo; 
+            }
+        }
+         
+        //factorial
+            generatefact = () => {
+                usernum=document.querySelector("#txtfact").value;
+                fact=1;
+                usernum=Math.floor(usernum);
+                if (usernum<=0){
+                    document.querySelector("#factorial").innerHTML="please enter the value greater than 0"; 
+                } else {
+                for (i=1;i<=usernum;i++){
+                    fact=fact*i;
+                }
+                document.querySelector("#factorial").innerHTML=fact;
+            }
+            }
+
+            //remove a character
+            removechar = () => {
+                val=1;
+                nameval=document.querySelector("#nam").value;
+                pstn=document.querySelector("#pos").value;
+                if(pstn=="" || nameval=="") {
+                    document.querySelector("#remove").innerHTML="please enter something";
+                } else if(pstn<0) {
+                    document.querySelector("#remove").innerHTML="please enter the value greater than 0";
+                } else {
+                 part1=nameval.slice(0,pstn);
+                 part2=nameval.slice(parseInt(pstn)+1,nameval.length);
+                document.querySelector("#remove").innerHTML=(part1+part2);
+                }
+            }
+            
+            //calculate the sum
+            calsum = () => {
+                sumval=document.querySelector("#sum").value;
+                sumval=Math.floor(sumval);
+                if (sumval=="" || sumval<=0) {
+                    document.querySelector("#add").innerHTML="please enter the value greater than 0";
+                } else {
+                total=0;
+               while (sumval>0) {
+                     total += parseInt(sumval);
+                   sumval=Math.floor(sumval/2);
+               }
+                document.querySelector("#add").innerHTML=total;
+            }
+        }
+
+            //pattern
+            generatepattern = () => {
+                patval=document.querySelector("#pat").value;
+                patval=Math.floor(patval);
+                if(patval=="" || patval<=0) {
+                    document.querySelector("#pattern").innerHTML="please enter the value greater than 0";
+                } else {
+                output="";
+                for(row=1;row<=patval;row++) {
+                    for (col=1;col<=row;col++)  output +="<b>^ </b> ";
+                     output +="<br> ";
+                }
+                document.querySelector("#pattern").innerHTML=output;
+            }
+        }
+
+         //pyramid
+         generatepyramid = () => {
+                pyrval=document.querySelector("#pyr").value;
+                pyrval=Math.floor(pyrval);
+                if(pyrval=="" || pyrval<=0) {
+                    document.querySelector("#pyramid").innerHTML="please enter the value greater than 0";
+                } else {
+                output="";
+                for(row=1;row<pyrval;row++) {
+                    for(col=row;col<=pyrval;col++) output += "&nbsp;&nbsp;&nbsp;";
+                    for(col=1;col<row;col++) output += " * ";
+                    for(col=1;col<=row;col++) output += " * ";
+                    output += "<br>"; }
+                for(row=1;row<=pyrval;row++) {
+                    for(col=1;col<=row;col++) output += "&nbsp;&nbsp;&nbsp;";
+                    for(col=row;col<pyrval;col++) output += " * ";
+                    for(col=row;col<=pyrval;col++) output += " * ";
+                    output += "<br>"; }
+                document.querySelector("#pyramid").innerHTML=output;
+            }
+        }
+
+        </script>
+    </body>
+</html>
