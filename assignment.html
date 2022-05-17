@@ -130,7 +130,7 @@
             //rotate string
             stringrotate = () => {
             enterName=document.querySelector("#txt").value;
-            enterName = enterName.split("");
+            enterName = enterName.trim().split("");
             if (enterName=="") {
                 document.querySelector("#rotation").innerHTML="please enter something";
             } else {
@@ -139,7 +139,7 @@
             for (i=1;i<=enterName.length;i++) {
                  removeFirst=enterName.shift();
                 insertLast=enterName.push(removeFirst);
-                output += enterName +"<br>";
+                output += enterName.join("") +"<br>";
             } 
             document.querySelector("#rotation").innerHTML=output;
             }
@@ -161,12 +161,13 @@
             //swap the elements
             swapelement = () => {
                 element=document.querySelector("#txtswp").value;
-                element=element.split("");
+                element=element.trim().split(" ");
                 if (element=="" || element.length<2){
+                    console.log(element.length);
                 document.querySelector("#swap").innerHTML="please enter the value greater than 1";
                 } else {
                  [element[0],element[element.length-1]] = [element[element.length-1],element[0]]
-                document.querySelector("#swap").innerHTML=element;
+                document.querySelector("#swap").innerHTML=element.join(" ");
                 }
             }
 
@@ -192,7 +193,7 @@
             //palindrome
             generatepalindrome = () => {
                 textpal=document.querySelector("#txtpal").value;
-                textpal=textpal.toUpperCase();
+                textpal=textpal.trim().toUpperCase();
                 if (textpal=="" || textpal.length<2){
                     document.querySelector("#palindrome").innerHTML="please enter more than one letter";
                 } else {
@@ -262,13 +263,14 @@
                 val=1;
                 nameval=document.querySelector("#nam").value;
                 pstn=document.querySelector("#pos").value;
+                nameval=nameval.trim();
                 if(pstn=="" || nameval=="") {
                     document.querySelector("#remove").innerHTML="please enter something";
                 } else if(pstn<0) {
                     document.querySelector("#remove").innerHTML="please enter the value greater than 0";
                 } else {
-                 part1=nameval.slice(0,pstn);
-                 part2=nameval.slice(parseInt(pstn)+1,nameval.length);
+                 part1=nameval.slice(0,parseInt(pstn)-1);
+                 part2=nameval.slice(pstn,nameval.length);
                 document.querySelector("#remove").innerHTML=(part1+part2);
                 }
             }
